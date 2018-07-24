@@ -5,6 +5,8 @@
 - clean: ['~']
 
 - link:
+    ~/.emacs.d: spacemacs
+    ~/.spacemacs.d: spacemacs.d
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
 
