@@ -15,7 +15,10 @@ add-zsh-hook precmd theme_precmd
 # %m => hostname up to the first dot (`.')
 # %# => A `#' if the shell is running with privileges, a `%' if not.
 
-prompt_symbol="${PROMPT_SYMBOL:-%#}"
+#prompt_symbol="${PROMPT_SYMBOL:-%#}"
+# ⚡ if root, ❯ otherwise
+prompt_symbol="${PROMPT_SYMBOL:-%(!.⚡.❯)}"
+#prompt_symbol="${PROMPT_SYMBOL:-%(!.⚡.❯)}"
 #prompt_symbol="${PROMPT_SYMBOL:-❯}"
 #prompt_symbol="${PROMPT_SYMBOL:-»}"
 #prompt_symbol="${PROMPT_SYMBOL:-›}"
@@ -38,8 +41,8 @@ function setprompt() {
   # background jobs (cite the number of jobs running; leave blank if there are none)
   promptline+=( "%(1j.%F{blue}%B%j%F{default}%b .)" )
 
-  # actual prompt character (red if the last command didn't exit with 0; default white)
-  promptline+=( "%(0?.%F{white}.%F{red})${prompt_symbol}%F{default} " )
+  # actual prompt character (red if the last command didn't exit with 0; default green)
+  promptline+=( "%(0?.%F{green}.%F{red})${prompt_symbol}%F{default} " )
 
   ### all together now
   lines+=( ${(j::)infoline} )
