@@ -60,6 +60,7 @@ set expandtab
 "   {lhs} is the sequence of keys to bind to, e.g. 'ab' or '<F4>'
 "   {rhs} is the macro to execute, e.g. '<ESC>', '/[.,;]<CR>', or 'FunctionName()' 
 
-" allow double-j to exit INSERT mode
+" add keybindings for exiting INSERT mode
 inoremap jj <ESC>
+inoremap ;a <ESC>
 
