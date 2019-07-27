@@ -1,101 +1,100 @@
-autoload -U add-zsh-hook
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# this will cause the `theme_precmd' function to be called before rendering the next prompt
-# I'm not sure if it gets called before the current command is actually run,
-# as the hook name (precmd) would suggest
-add-zsh-hook precmd theme_precmd
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
 
-### LEGEND:
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="agnoster"
 
-## prompt:
-# look for 'EXPANSION OF PROMPT SEQUENCES' in `man zshmisc'
-# %F => start a new foreground color, e.g. `"%F{red}foo%F{default}bar"' will have 'foo' in red and 'bar' in the default color
-# %K => start a new background color, e.g. `"%K{red}foo%K{default}bar"' will have 'foo' on a red background and 'bar' with the default color
-# %B/%b => start/stop boldface font
-# %n => username
-# %m => hostname up to the first dot (`.')
-# %# => A `#' if the shell is running with privileges, a `%' if not.
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-#prompt_symbol="${PROMPT_SYMBOL:-%#}"
-# ⚡ if root, ❯ otherwise
-prompt_symbol="${PROMPT_SYMBOL:-%(!.⚡.❯)}"
-#prompt_symbol="${PROMPT_SYMBOL:-%(!.⚡.❯)}"
-#prompt_symbol="${PROMPT_SYMBOL:-❯}"
-#prompt_symbol="${PROMPT_SYMBOL:-»}"
-#prompt_symbol="${PROMPT_SYMBOL:-›}"
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-# characters
-SEGMENT_SEPARATOR="\ue0b0"
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
-function prompt_dir() {
-  local -a pieces
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
 
-  # current directory (shown in green if it's writable, yellow otherwise)
-  #[[ -w "${PWD}" ]] && infoline+=( "%F{green}" ) || infoline+=( "%F{yellow}" )
-  #pieces+=( "%K{blue}%F{black}" )
-  #pieces+=( " ${PWD/$HOME/~} " )
-  #pieces+=( "%F{blue}%K{default}" )
-  #pieces+=( "$(echo ${SEGMENT_SEPARATOR}) " "%F{default}" )
-  #pieces+=( "%F{default}" )
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
 
-  pieces=( \
-    # set the background and foreground colors for the segment
-    "%K{blue}%F{black}"             \
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
 
-    # display the current directory with the home path collapsed to a tilde
-    " ${PWD/$HOME/~} "              \
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
-    # set the background back to the default and the foreground to the previous background so the block arrow will be colored properly
-    "%F{blue}%K{default}"           \
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
 
-    # display the block arrow
-    "${SEGMENT_SEPARATOR} " \
-    #"$(print -n ${SEGMENT_SEPARATOR}) " \
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
-    # set the foreground back to the default
-    "%F{default}"                   \
-  )
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
 
-  print -n "${(j::)pieces}"
-}
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
 
-function setprompt() {
-  local -a lines infoline promptline
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-  ### assemble the top line (infoline)
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
 
-  # current directory (shown in green if it's writable, yellow otherwise)
-  #[[ -w "${PWD}" ]] && infoline+=( "%F{green}" ) || infoline+=( "%F{yellow}" )
-  #infoline+=( "%K{blue}%F{black}" )
-  #infoline+=( " ${PWD/$HOME/~} " )
-  #infoline+=( "%F{blue}%K{default}" )
-  #infoline+=( "$(echo ${SEGMENT_SEPARATOR}) " "%F{default}" )
-  ##infoline+=( "%F{default}" )
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
 
-  infoline+="$(prompt_dir)"
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
 
-  # username and host (if we're an SSH client)
-  infoline+=( "%F{blue}%B(%n)%F{default}%b" )
-  [[ -n "${SSH_CLIENT}" ]] && infoline+=( "@%m" )
+source $ZSH/oh-my-zsh.sh
 
-  ### assemble the bottom line (promptline)
+# User configuration
 
-  # background jobs (cite the number of jobs running; leave blank if there are none)
-  promptline+=( "%(1j.%F{blue}%B%j%F{default}%b .)" )
+# export MANPATH="/usr/local/man:$MANPATH"
 
-  # actual prompt character (red if the last command didn't exit with 0; default green)
-  promptline+=( "%(0?.%F{green}.%F{red})${prompt_symbol}%F{default} " )
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
-  ### all together now
-  lines+=( ${(j::)infoline} )
-  lines+=( ${(j::)promptline} )
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
-  ### set the prompt
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
-  PROMPT=${(F)lines}
-}
-
-function theme_precmd() {
-  setprompt
-}
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 

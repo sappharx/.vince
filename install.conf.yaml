@@ -6,6 +6,7 @@
 
 - link:
     ~/.emacs.d: spacemacs
+    ~/.oh-my-zsh: oh-my-zsh
     ~/.spacemacs.d: spacemacs.d
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
