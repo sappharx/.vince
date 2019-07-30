@@ -67,7 +67,7 @@ ZSH_THEME="agnoster"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM=~/.zsh-custom
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -79,6 +79,10 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+# remove "user@hostname"
+DEFAULT_USER=vince
+prompt_context(){}
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -103,4 +107,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
 set +x
+

@@ -10,6 +10,7 @@
     ~/.spacemacs.d: spacemacs.d
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
+    ~/.zsh-custom: zsh-custom
     ~/.zshrc: zshrc
 
 - shell:
