@@ -1557,7 +1557,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/vince/.vince/iterm2</string>
+	<string>/Users/vince/iterm2</string>
 	<key>QuitWhenAllWindowsClosed</key>
 	<true/>
 	<key>SUEnableAutomaticChecks</key>

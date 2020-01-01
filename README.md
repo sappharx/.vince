@@ -12,7 +12,7 @@ brew install emacs-plus
 ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications
 
 # add to .zshrc
-alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw
+alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs -nw"
 ```
 
 ## Updating submodules

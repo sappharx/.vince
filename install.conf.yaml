@@ -8,6 +8,7 @@
     ~/.alacritty.yml: alacritty.yml
     ~/.emacs.d: spacemacs
     ~/.gitconfig: gitconfig
+    ~/.iterm2: iterm2
     ~/.oh-my-zsh: oh-my-zsh
     ~/.spacemacs.d: spacemacs.d
     ~/.tmux.conf: tmux.conf
