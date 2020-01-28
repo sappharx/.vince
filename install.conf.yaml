@@ -7,12 +7,11 @@
 - link:
     ~/.alacritty.yml: alacritty.yml
     ~/.emacs.d: spacemacs
-    ~/.gitconfig: gitconfig
-    ~/.iterm2: iterm2
+#    ~/.gitconfig: gitconfig
     ~/.oh-my-zsh: oh-my-zsh
     ~/.spacemacs.d: spacemacs.d
-    ~/.tmux.conf: tmux.conf
-    ~/.vimrc: vimrc
+#    ~/.tmux.conf: tmux.conf
+#    ~/.vimrc: vimrc
     ~/.zsh-custom: zsh-custom
     ~/.zshrc: zshrc
 
