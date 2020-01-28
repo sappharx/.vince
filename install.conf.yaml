@@ -5,7 +5,7 @@
 - clean: ['~']
 
 - link:
-    ~/.alacritty.yml: alacritty.yml
+#    ~/.alacritty.yml: alacritty.yml
     ~/.emacs.d: spacemacs
 #    ~/.gitconfig: gitconfig
     ~/.oh-my-zsh: oh-my-zsh
