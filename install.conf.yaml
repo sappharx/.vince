@@ -8,12 +8,12 @@
 #    ~/.alacritty.yml: alacritty.yml
 #    ~/.emacs.d: spacemacs
 #    ~/.gitconfig: gitconfig
-    ~/.oh-my-zsh: oh-my-zsh
+#    ~/.oh-my-zsh: oh-my-zsh
 #    ~/.spacemacs.d: spacemacs.d
 #    ~/.tmux.conf: tmux.conf
 #    ~/.vimrc: vimrc
-    ~/.zsh-custom: zsh-custom
-    ~/.zshrc: zshrc
+#    ~/.zsh-custom: zsh-custom
+#    ~/.zshrc: zshrc
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
